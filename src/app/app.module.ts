@@ -8,6 +8,17 @@ import { HomeComponent } from './components/home/home.component';
 //Forms
 import { FormsModule } from "@angular/forms";
 
+//Routes
+import { RouterModule , Routes } from '@angular/router';
+const appRoutes: Routes = [
+  {path: '' , component:HomeComponent}
+  ,{path: 'products' , component:ProductsComponent}
+  ,{path: 'product/:id' , component:ProductComponent}
+  ,{path: 'add-product' , component:AddProductComponent}
+  ,{path: 'edit-product/:id' , component:EditProductComponent}
+  ,{path: 'delete-product/:id' , component:DeleteProductComponent}
+
+];
 
 import { ProductsComponent } from './components/products/products.component';
 import { ProductComponent } from './components/product/product.component';
@@ -32,7 +43,9 @@ import { FooterComponent } from './components/footer/footer.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
