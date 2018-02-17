@@ -8,6 +8,16 @@ import { HomeComponent } from './components/home/home.component';
 //Forms
 import { FormsModule } from "@angular/forms";
 
+
+
+import { ProductsComponent } from './components/products/products.component';
+import { ProductComponent } from './components/product/product.component';
+import { AddProductComponent } from './components/add-product/add-product.component';
+import { EditProductComponent } from './components/edit-product/edit-product.component';
+import { DeleteProductComponent } from './components/delete-product/delete-product.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+
 //Routes
 import { RouterModule , Routes } from '@angular/router';
 const appRoutes: Routes = [
@@ -19,15 +29,6 @@ const appRoutes: Routes = [
   ,{path: 'delete-product/:id' , component:DeleteProductComponent}
 
 ];
-
-import { ProductsComponent } from './components/products/products.component';
-import { ProductComponent } from './components/product/product.component';
-import { AddProductComponent } from './components/add-product/add-product.component';
-import { EditProductComponent } from './components/edit-product/edit-product.component';
-import { DeleteProductComponent } from './components/delete-product/delete-product.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { FooterComponent } from './components/footer/footer.component';
-
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { FooterComponent } from './components/footer/footer.component';
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes)
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
