@@ -8,6 +8,8 @@ import { HomeComponent } from './components/home/home.component';
 //Forms
 import { FormsModule } from "@angular/forms";
 
+//Material design modules
+import {  MatButtonModule } from '@angular/material';
 
 
 import { ProductsComponent } from './components/products/products.component';
@@ -17,6 +19,7 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
 import { DeleteProductComponent } from './components/delete-product/delete-product.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+
 
 //Routes
 import { RouterModule , Routes } from '@angular/router';
@@ -40,11 +43,12 @@ const appRoutes: Routes = [
     EditProductComponent,
     DeleteProductComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    MatButtonModule,
     RouterModule.forRoot(appRoutes)
 
   ],
