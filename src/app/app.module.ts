@@ -33,6 +33,14 @@ const appRoutes: Routes = [
 
 ];
 
+// firebase configuration
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,8 +57,10 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     MatButtonModule,
-    RouterModule.forRoot(appRoutes)
-
+    RouterModule.forRoot(appRoutes),
+    AngularFireModule.initializeApp(environment.firebase,'product-list-app'),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
