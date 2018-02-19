@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase , AngularFireList } from 'angularfire2/database';
+
+import { Observable } from 'rxjs/Observable';
+
 
 @Component({
   selector: 'app-products',
@@ -7,7 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor() { }
+  products : Observable<any[]>;
+  allProducts: any;
+
+  constructor(private db: AngularFireDatabase) { 
+    this.products = db.list('/products').valueChanges();
+    this.products.subscribe(snapProducts => {
+      this.allProducts = snapProducts;
+      console.log(this.allProducts);
+    });
+
+    console.log(this.products);
+  }
 
   ngOnInit() {
   }
