@@ -39,6 +39,8 @@ import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 
+//services
+import { FirebaseService } from './services/firebase.service';
 
 
 @NgModule({
@@ -62,7 +64,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     AngularFireDatabaseModule,
     AngularFirestoreModule
   ],
-  providers: [],
+  providers: [FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase , AngularFireList } from 'angularfire2/database';
+import { FirebaseService } from '../../services/firebase.service';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -10,20 +10,15 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-
-  products : Observable<any[]>;
+  
   allProducts: any;
 
-  constructor(private db: AngularFireDatabase) { 
-    this.products = db.list('/products').valueChanges();
-    this.products.subscribe(snapProducts => {
-      this.allProducts = snapProducts;
-      
-    });
-
-  }
+  constructor(private firebaseService: FirebaseService ) {    }
 
   ngOnInit() {
+    this.firebaseService.getProducts().subscribe(snapProducts => {
+      this.allProducts = snapProducts;
+    });
   }
 
 }
