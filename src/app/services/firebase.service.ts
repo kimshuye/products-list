@@ -11,6 +11,7 @@ export class FirebaseService {
   products : Observable<any[]>;
   
   favoriteProducts: Observable<any>;
+  neverBuyProducts: Observable<any>;
 
   constructor(private db: AngularFireDatabase) { }
 
@@ -19,12 +20,20 @@ export class FirebaseService {
     return this.products;
   }
 
-  getUntagFavProducts(){
+  getFavProducts(){
     this.favoriteProducts = this.db.list<Product>('/products').valueChanges().map(snapProducts => {
       const topRatedProducts = snapProducts.filter(item => item.rate > 0 );
       return topRatedProducts;
     });
     return this.favoriteProducts;
+  }
+
+  getNeverBuyProducts(){
+    this.neverBuyProducts = this.db.list<Product>('/products').valueChanges().map(snapProducts => {
+      const never = snapProducts.filter(item => item.bought == null );
+      return never;
+    });
+    return this.neverBuyProducts;
   }
 
 }
@@ -33,8 +42,9 @@ interface Product{
   $sku?: string;
   $name?: string; 
   $barcode?: string;
-  pirce?: string;
+  pirce?: DoubleRange;
   imageUrl?: string;
   rate: number;
+  bought: boolean;
 
 }

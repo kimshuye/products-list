@@ -9,13 +9,19 @@ import { FirebaseService } from '../../services/firebase.service';
 export class HomeComponent implements OnInit {
 
   favoriteProducts : any;
+  neverBuyProducts : any;
 
   constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit() {
-    this.firebaseService.getUntagFavProducts().subscribe(snapProducts => {
+    this.firebaseService.getFavProducts().subscribe(snapProducts => {
       this.favoriteProducts = snapProducts;
       console.log(this.favoriteProducts);
+    });
+
+    this.firebaseService.getNeverBuyProducts().subscribe(snapProducts => {
+      this.neverBuyProducts = snapProducts;
+      console.log('Never Products : ' , this.neverBuyProducts);
     });
   }
 
