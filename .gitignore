@@ -47,5 +47,5 @@ Thumbs.db
 products.json
 
 # environments config
-/environments
+/src/environments
 

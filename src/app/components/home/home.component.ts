@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
   selector: 'app-home',
@@ -7,15 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  productTitle = "Product list";
+  favoriteProducts : any;
 
-  constructor() { }
+  constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit() {
-  }
-
-  clicked(){
-    console.log('h2 clicked!');
+    this.firebaseService.getUntagFavProducts().subscribe(snapProducts => {
+      this.favoriteProducts = snapProducts;
+      console.log(this.favoriteProducts);
+    });
   }
 
 }
