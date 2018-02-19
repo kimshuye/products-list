@@ -1,3 +1,9 @@
-<p>
-  products works!
-</p>
+
+<ul>
+  <li *ngFor="let product of products | async ">{{product | json }}</li>
+</ul>
+
+
+<ul>
+  <li *ngFor="let product of allProducts  ">ชื่อสินค้า : {{product.name}}</li>
+</ul>

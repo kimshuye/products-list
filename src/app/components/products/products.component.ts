@@ -18,10 +18,9 @@ export class ProductsComponent implements OnInit {
     this.products = db.list('/products').valueChanges();
     this.products.subscribe(snapProducts => {
       this.allProducts = snapProducts;
-      console.log(this.allProducts);
+      
     });
 
-    console.log(this.products);
   }
 
   ngOnInit() {
