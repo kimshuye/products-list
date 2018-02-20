@@ -1,4 +1,4 @@
 
 <ul>
-  <li *ngFor="let product of allProducts  ">ชื่อสินค้า : {{product.name}}</li>
+  <li *ngFor="let product of allProducts | async ">ชื่อสินค้า : {{product | json }}</li>
 </ul>

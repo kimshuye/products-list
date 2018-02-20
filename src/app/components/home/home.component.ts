@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FirebaseService } from '../../services/firebase.service';
+import { FirebaseService , Product } from '../../services/firebase.service';
+
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-home',

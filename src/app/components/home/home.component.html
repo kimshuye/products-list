@@ -1,4 +1,35 @@
 
+<mat-toolbar>Top Rated Products</mat-toolbar>
+<mat-grid-list cols="4" >
+    <mat-grid-tile *ngFor="let product of favoriteProducts  " >
+        <mat-card>
+            <mat-card-title><h4>{{product.name}}</h4></mat-card-title>
+            <mat-card-subtitle>Subtitle</mat-card-subtitle>
+            <img mat-card-sm-image src="{{product.imageUrl}}" alt="{{product.name}}" >
+            <mat-card-actions align="" >
+                <button mat-button mat-raised-button class="detailButton" [routerLink]="['/product/+product.$key']" > <i class="material-icons">visibility</i> Product Details</button>
+                <button mat-button mat-raised-button class="editButton" [routerLink]="['/edit-product/+product.$key']" > <i class="material-icons">mode_edit</i> Edit Product</button>
+                
+            </mat-card-actions>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>
 
-<button mat-button>Click me!</button>
 
+<mat-toolbar>Never Buy Products</mat-toolbar>
+<mat-grid-list cols="4" >
+    <mat-grid-tile *ngFor="let product of neverBuyProducts  " >
+        <mat-card>
+            <mat-card-title><h4>{{product.name}}</h4></mat-card-title>
+            <mat-card-subtitle>Subtitle</mat-card-subtitle>
+            <img mat-card-sm-image src="{{product.imageUrl}}" alt="{{product.name}}" >
+            <mat-card-actions align="" >
+                <button mat-button mat-raised-button class="detailButton" [routerLink]="['/product/+product.$key']" > <i class="material-icons">visibility</i> Product Details</button>
+                <button mat-button mat-raised-button class="editButton" [routerLink]="['/edit-product/+product.$key']" > <i class="material-icons">mode_edit</i> Edit Product</button>
+                    
+            </mat-card-actions>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>
+
+    

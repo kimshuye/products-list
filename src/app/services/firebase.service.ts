@@ -8,20 +8,28 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class FirebaseService {
 
-  products : Observable<any[]>;
+  
+  products : AngularFireList<any[]>;
   
   favoriteProducts: Observable<any>;
   neverBuyProducts: Observable<any>;
 
-  constructor(private db: AngularFireDatabase) { }
+  shirtsRef ;
+
+  path = 'products';
+
+  constructor(private db: AngularFireDatabase) { 
+    this.shirtsRef = db.list<Product>(this.path);
+  }
 
   getProducts(){
-    this.products = this.db.list<Product>('/products').valueChanges() as  Observable<any[]>;
+    this.products = this.db.list(this.path);
+    this.products.valueChanges().subscribe(console.log)
     return this.products;
   }
 
   getFavProducts(){
-    this.favoriteProducts = this.db.list<Product>('/products').valueChanges().map(snapProducts => {
+    this.favoriteProducts = this.db.list<Product>(this.path).valueChanges().map(snapProducts => {
       const topRatedProducts = snapProducts.filter(item => item.rate > 0 );
       return topRatedProducts;
     });
@@ -29,7 +37,7 @@ export class FirebaseService {
   }
 
   getNeverBuyProducts(){
-    this.neverBuyProducts = this.db.list<Product>('/products').valueChanges().map(snapProducts => {
+    this.neverBuyProducts = this.db.list<Product>(this.path).valueChanges().map(snapProducts => {
       const never = snapProducts.filter(item => item.bought == null );
       return never;
     });
@@ -38,13 +46,14 @@ export class FirebaseService {
 
 }
 
-interface Product{
-  $sku?: string;
-  $name?: string; 
-  $barcode?: string;
-  pirce?: DoubleRange;
-  imageUrl?: string;
-  rate: number;
-  bought: boolean;
-
+export interface Product{
+  //$key:{
+    sku?: string;
+    name?: string; 
+    barcode?: string;
+    pirce?: DoubleRange;
+    imageUrl?: string;
+    rate?: number;
+    bought?: boolean;
+  //}
 }

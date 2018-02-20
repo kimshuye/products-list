@@ -1,16 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {BrowserAnimationsModule,NoopAnimationsModule} from '@angular/platform-browser/animations';
+import 'hammerjs';
 
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-
-//Forms
-import { FormsModule } from "@angular/forms";
-
-//Material design modules
-import {  MatButtonModule } from '@angular/material';
-
 
 import { ProductsComponent } from './components/products/products.component';
 import { ProductComponent } from './components/product/product.component';
@@ -20,6 +15,26 @@ import { DeleteProductComponent } from './components/delete-product/delete-produ
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 
+
+//Forms
+import { FormsModule } from "@angular/forms";
+
+//Material design modules
+import {  
+  MatButtonModule,
+  MatCheckboxModule,
+  MatCardModule,
+  MatGridListModule,
+  MatInputModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatToolbarModule,
+  MatProgressSpinnerModule,
+  MatTabsModule,
+  MatListModule,
+  MatIconModule,
+
+ } from '@angular/material';
 
 //Routes
 import { RouterModule , Routes } from '@angular/router';
@@ -58,12 +73,43 @@ import { FirebaseService } from './services/firebase.service';
   imports: [
     BrowserModule,
     FormsModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
+
     MatButtonModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatGridListModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatToolbarModule,
+    MatProgressSpinnerModule,
+    MatTabsModule,
+    MatListModule,
+    MatIconModule,
+    
     RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(environment.firebase,'product-list-app'),
     AngularFireDatabaseModule,
     AngularFirestoreModule
   ],
+
+  // exports:[
+  //   MatButtonModule,
+  //   MatCheckboxModule,
+  //   MatCardModule,
+  //   MatGridListModule,
+  //   MatInputModule,
+  //   MatDatepickerModule,
+  //   MatNativeDateModule,
+  //   MatToolbarModule,
+  //   MatProgressSpinnerModule,
+  //   MatTabsModule,
+  //   MatListModule,
+  //   MatIconModule
+  // ],
+
   providers: [FirebaseService],
   bootstrap: [AppComponent]
 })
