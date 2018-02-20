@@ -13,8 +13,10 @@ export class FirebaseService {
   
   favoriteProducts: Observable<any>;
   neverBuyProducts: Observable<any>;
+  productDetails: Observable<any>;
 
-  shirtsRef ;
+
+  shirtsRef;
 
   path = 'products';
 
@@ -44,10 +46,15 @@ export class FirebaseService {
     return this.neverBuyProducts;
   }
 
+  getProductDetails(id){ 
+    this.productDetails = this.db.object(this.path + '/' + id ).valueChanges() as Observable<any>;
+    return this.productDetails;
+
+  }
+
 }
 
 export interface Product{
-  //$key:{
     sku?: string;
     name?: string; 
     barcode?: string;
@@ -55,5 +62,4 @@ export interface Product{
     imageUrl?: string;
     rate?: number;
     bought?: boolean;
-  //}
 }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService , Product } from '../../services/firebase.service';
+import { ActivatedRoute , Router } from "@angular/router";
+
 
 @Component({
   selector: 'app-product',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductComponent implements OnInit {
 
-  constructor() { }
+  id:any;
+
+  constructor(private firebaseService: FirebaseService,
+    private router:Router,
+    private route:ActivatedRoute
+  ) {
+
+  }
 
   ngOnInit() {
+    this.id = this.route.snapshot.params['id'];
+    this.firebaseService.getProductDetails(this.id).subscribe(snapProduct => {
+      console.log('product detail : ' + JSON.stringify(snapProduct) );
+    });
   }
 
 }
