@@ -1,3 +1,54 @@
-<p>
-  product works!
-</p>
+
+<mat-toolbar> Product Details </mat-toolbar>
+
+<!-- <div class="details-product" *ngIf="barcode" > -->
+<div class=""  >
+  
+  <mat-card>
+
+    <mat-card-actions >
+      
+      <button [routerLink]="['/products']" mat-raised-button> <i class="material-icons">view_module</i> All Products </button>      
+      <button [routerLink]="['/edit-product/'+id]"  mat-raised-button class="editButton"> <i class="material-icons">mode_edit</i> Edit </button>
+      <button [routerLink]="['/delete-product/'+id]" mat-raised-button color="warn"> <i class="material-icons">delete_sweep</i> Delete </button>
+      
+    </mat-card-actions>
+
+    <mat-card-header>
+
+      <mat-card-title> <span class="mat-headline">{{name}}</span> </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <!-- <div class="left" > -->
+      <div class="left" >
+        <img mat-card-lg-image src="{{imageUrl}}" alt="{{name}}" >
+      </div>
+      <!-- <hr> -->
+      
+      <!-- <div class="right"> -->
+      <div class="right">
+        <mat-list>
+            <mat-list-item> <i class="material-icons">  </i> sku:&nbsp;&nbsp;<b> {{sku}}</b> </mat-list-item>
+            <mat-list-item> <i class="material-icons">  </i> name:&nbsp;&nbsp;<b> {{name}}</b> </mat-list-item>
+            <mat-list-item> <i class="material-icons">  </i> barcode:&nbsp;&nbsp;<b> {{barcode}}</b> </mat-list-item>
+            <mat-list-item> <i class="material-icons">attach_money</i> pirce:&nbsp;&nbsp;<b> {{price}}</b> </mat-list-item>
+            <mat-list-item> <i class="material-icons">star</i> rate:&nbsp;&nbsp;<b> {{rate}}</b> </mat-list-item>
+            <mat-list-item> <i class="material-icons">  </i> bought:&nbsp;&nbsp;<b> {{bought}}</b> </mat-list-item>
+            
+        </mat-list>
+
+      </div>
+
+     
+
+    </mat-card-content>
+
+    <mat-toolbar> <hr> </mat-toolbar>
+
+    <mat-card-footer> ... </mat-card-footer>
+
+  </mat-card>
+
+
+</div>

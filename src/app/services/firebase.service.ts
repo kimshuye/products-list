@@ -47,7 +47,7 @@ export class FirebaseService {
   }
 
   getProductDetails(id){ 
-    this.productDetails = this.db.object(this.path + '/' + id ).valueChanges() as Observable<any>;
+    this.productDetails = this.db.object<Product>(this.path + '/' + id ).valueChanges() as Observable<any>;
     return this.productDetails;
 
   }
@@ -58,7 +58,7 @@ export interface Product{
     sku?: string;
     name?: string; 
     barcode?: string;
-    pirce?: DoubleRange;
+    price?: number;
     imageUrl?: string;
     rate?: number;
     bought?: boolean;
