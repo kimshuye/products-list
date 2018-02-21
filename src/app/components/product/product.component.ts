@@ -12,7 +12,7 @@ import { Observable } from 'rxjs/Observable';
 export class ProductComponent implements OnInit {
 
   id:any;
-  productInVal: Object;
+  productInVal: any;
 
   sku: string;
   name: string; 

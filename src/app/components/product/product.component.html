@@ -1,25 +1,17 @@
 
-<mat-toolbar> Product Details </mat-toolbar>
+<mat-toolbar>
+  <span class="mat-headline">Product Details</span>
+</mat-toolbar>
 
-<!-- <div class="details-product" *ngIf="barcode" > -->
-<div class=""  >
+<div class="details-product"  *ngIf="barcode" >
   
-  <mat-card>
-
-    <mat-card-actions >
-      
-      <button [routerLink]="['/products']" mat-raised-button> <i class="material-icons">view_module</i> All Products </button>      
-      <button [routerLink]="['/edit-product/'+id]"  mat-raised-button class="editButton"> <i class="material-icons">mode_edit</i> Edit </button>
-      <button [routerLink]="['/delete-product/'+id]" mat-raised-button color="warn"> <i class="material-icons">delete_sweep</i> Delete </button>
-      
-    </mat-card-actions>
+  <mat-card style="padding: 15px; padding-left: 150px;">
 
     <mat-card-header>
-
       <mat-card-title> <span class="mat-headline">{{name}}</span> </mat-card-title>
     </mat-card-header>
 
-    <mat-card-content>
+    <mat-card-content >
       <!-- <div class="left" > -->
       <div class="left" >
         <img mat-card-lg-image src="{{imageUrl}}" alt="{{name}}" >
@@ -40,11 +32,17 @@
 
       </div>
 
-     
-
     </mat-card-content>
 
-    <mat-toolbar> <hr> </mat-toolbar>
+    <mat-toolbar style="height: auto;"> <hr> </mat-toolbar>
+
+    <mat-card-actions >
+      
+      <button [routerLink]="['/products']" mat-raised-button> <i class="material-icons">view_module</i> All Products </button>      
+      <button [routerLink]="['/edit-product/'+barcode]"  mat-raised-button class="editButton"> <i class="material-icons">mode_edit</i> Edit </button>
+      <button [routerLink]="['/delete-product/'+barcode]" mat-raised-button color="warn"> <i class="material-icons">delete_sweep</i> Delete </button>
+      
+    </mat-card-actions>
 
     <mat-card-footer> ... </mat-card-footer>
 

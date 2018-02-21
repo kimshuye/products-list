@@ -1,4 +1,33 @@
+<mat-toolbar > 
 
-<ul>
-  <li *ngFor="let product of allProducts | async ">ชื่อสินค้า : {{product | json }}</li>
-</ul>
+    <mat-toolbar-row >
+      <span class="mat-headline ">All Products  </span>
+    </mat-toolbar-row>
+
+  </mat-toolbar>
+
+<mat-grid-list cols="4" >
+  <mat-grid-tile *ngFor="let product of allProducts" >
+
+    <mat-card class="productTitle" >
+
+      <mat-card-header>
+        <mat-card-title> <span class="mat-headline">{{product.name}}</span> </mat-card-title>
+      </mat-card-header>
+
+      <img mat-card-lg-image src="{{product.imageUrl}}" alt="{{product.name}}" >      
+
+      <mat-card-actions >
+        <button [routerLink]="['/product/'+product.barcode]" mat-raised-button color="detailsButton"> <i class="material-icons">visibility</i> Product Details </button>
+        <button [routerLink]="['/edit-product/'+product.barcode]"  mat-raised-button class="editButton"> <i class="material-icons">mode_edit</i> Edit </button>
+          
+      </mat-card-actions>
+
+      <!-- <mat-toolbar> ... </mat-toolbar> -->
+      <!-- <mat-card-footer> ... </mat-card-footer> -->
+
+    </mat-card>    
+    
+  </mat-grid-tile>
+
+</mat-grid-list>

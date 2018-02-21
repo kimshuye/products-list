@@ -16,11 +16,11 @@ export class ProductsComponent implements OnInit {
   constructor(private firebaseService: FirebaseService ) {    }
 
   ngOnInit() {
-    this.allProducts = this.firebaseService.getProducts().valueChanges();
+    // this.allProducts = this.firebaseService.getProducts().valueChanges();
 
-    // this.firebaseService.getProducts().valueChanges().subscribe(snapProducts => {
-    //   this.allProducts = snapProducts;
-    // });
+    this.firebaseService.getProducts().valueChanges().subscribe(snapProducts => {
+      this.allProducts = snapProducts;
+    });
 
     // this.firebaseService.getFavProducts().map(actions => {
     //   return actions.map(action => ({ key: action.key, ...action.payload.val() }));
