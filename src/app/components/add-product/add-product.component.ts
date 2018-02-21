@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Directive, Output, HostListener, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-add-product',
@@ -11,5 +12,7 @@ export class AddProductComponent implements OnInit {
 
   ngOnInit() {
   }
+
+
 
 }

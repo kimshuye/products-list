@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule,NoopAnimationsModule} from '@angular/platform-browser/animations';
 import 'hammerjs';
-
+import { MouseWheelDirective } from './mouseWheelDirective/mousewheel.directive';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -69,6 +69,8 @@ import { FirebaseService } from './services/firebase.service';
     DeleteProductComponent,
     NavbarComponent,
     FooterComponent,
+
+    MouseWheelDirective,
   ],
   imports: [
     BrowserModule,
@@ -95,20 +97,9 @@ import { FirebaseService } from './services/firebase.service';
     AngularFirestoreModule
   ],
 
-  // exports:[
-  //   MatButtonModule,
-  //   MatCheckboxModule,
-  //   MatCardModule,
-  //   MatGridListModule,
-  //   MatInputModule,
-  //   MatDatepickerModule,
-  //   MatNativeDateModule,
-  //   MatToolbarModule,
-  //   MatProgressSpinnerModule,
-  //   MatTabsModule,
-  //   MatListModule,
-  //   MatIconModule
-  // ],
+  exports:[
+    MouseWheelDirective
+  ],
 
   providers: [FirebaseService],
   bootstrap: [AppComponent]
