@@ -12,15 +12,8 @@ import { Observable } from 'rxjs/Observable';
 export class ProductComponent implements OnInit {
 
   id:any;
-  productInVal: any;
-
-  sku: string;
-  name: string; 
-  barcode: string;
-  price: number;
-  imageUrl: string;
-  rate: number;
-  bought: boolean;
+  productInVal:any;
+  $key:string;
 
   constructor(private firebaseService: FirebaseService,
     private router:Router,
@@ -32,17 +25,14 @@ export class ProductComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
     this.firebaseService.getProductDetails(this.id).subscribe(snapProduct => {
-      //console.log('product detail : ' + JSON.stringify(snapProduct) );
+      // console.log('product detail : ' + JSON.stringify(snapProduct) );
       this.productInVal = snapProduct;
-      this.sku = snapProduct.sku;
-      this.name = snapProduct.name;
-      this.barcode = snapProduct.barcode;
-      this.price = snapProduct.price;
-      this.imageUrl = snapProduct.imageUrl;
-      this.rate = snapProduct.rate;
-      this.bought = snapProduct.bought;
-
+      this.$key = snapProduct.$key;
     });
+
+    // this.productInVal = this.firebaseService.getProductDetails(this.id);
+    // console.log( this.productInVal );
+
   }
 
 }

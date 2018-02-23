@@ -3,31 +3,30 @@
   <span class="mat-headline">Product Details</span>
 </mat-toolbar>
 
-<div class="details-product"  *ngIf="barcode" >
+<div class="details-product"  *ngIf="$key" >
   
   <!-- <mat-card style="padding: 15px; padding-left: 150px;"> -->
   <mat-card >
 
     <mat-card-header>
-      <mat-card-title> <span class="mat-headline">{{name}}</span> </mat-card-title>
+      <mat-card-title> <span class="mat-headline">{{productInVal.name }}</span> </mat-card-title>
     </mat-card-header>
 
     <mat-card-content >
       <!-- <div class="left" > -->
       <div class="left" >
-        <img mat-card-lg-image src="{{imageUrl}}" alt="{{name}}" >
+        <img mat-card-lg-image src="{{productInVal.imageUrl}}" alt="{{productInVal.name}}" >
       </div>
       <!-- <hr> -->
       
       <!-- <div class="right"> -->
       <div class="right">
         <mat-list>
-            <mat-list-item> <i class="material-icons">  </i> sku:&nbsp;&nbsp;<b> {{sku}}</b> </mat-list-item>
-            <mat-list-item> <i class="material-icons">  </i> name:&nbsp;&nbsp;<b> {{name}}</b> </mat-list-item>
-            <mat-list-item> <i class="material-icons">  </i> barcode:&nbsp;&nbsp;<b> {{barcode}}</b> </mat-list-item>
-            <mat-list-item> <i class="material-icons">attach_money</i> pirce:&nbsp;&nbsp;<b> {{price}}</b> </mat-list-item>
-            <mat-list-item> <i class="material-icons">star</i> rate:&nbsp;&nbsp;<b> {{rate}}</b> </mat-list-item>
-            <mat-list-item> <i class="material-icons">  </i> bought:&nbsp;&nbsp;<b> {{bought}}</b> </mat-list-item>
+            <mat-list-item> <i class="material-icons">  </i> sku:&nbsp;&nbsp;<b> {{productInVal.sku}}</b> </mat-list-item>
+            <mat-list-item> <i class="material-icons">  </i> name:&nbsp;&nbsp;<b> {{productInVal.name}}</b> </mat-list-item>
+            <mat-list-item> <i class="material-icons">  </i> barcode:&nbsp;&nbsp;<b> {{productInVal.barcode}}</b> </mat-list-item>
+            <mat-list-item> <i class="material-icons">attach_money</i> pirce:&nbsp;&nbsp;<b> {{productInVal.price}}</b> </mat-list-item>
+            <mat-list-item> <i class="material-icons">star</i> rate:&nbsp;&nbsp;<b> {{productInVal.rate}}</b> </mat-list-item>
             
         </mat-list>
 
@@ -40,8 +39,8 @@
     <mat-card-actions >
       
       <button [routerLink]="['/products']" mat-raised-button> <i class="material-icons">view_module</i> All Products </button>      
-      <button [routerLink]="['/edit-product/'+barcode]"  mat-raised-button class="editButton"> <i class="material-icons">mode_edit</i> Edit </button>
-      <button [routerLink]="['/delete-product/'+barcode]" mat-raised-button color="warn"> <i class="material-icons">delete_sweep</i> Delete </button>
+      <button [routerLink]="['/edit-product/'+productInVal.$key]"  mat-raised-button class="editButton"> <i class="material-icons">mode_edit</i> Edit </button>
+      <button [routerLink]="['/delete-product/'+productInVal.$key]" mat-raised-button color="warn"> <i class="material-icons">delete_sweep</i> Delete </button>
       
     </mat-card-actions>
 

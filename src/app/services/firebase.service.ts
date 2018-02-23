@@ -17,7 +17,7 @@ export class FirebaseService {
 
   shirtsRef: any;
 
-  path = 'products';
+  productspath = 'products';
 
   constructor(private db: AngularFireDatabase) { 
     this.getProducts();
@@ -25,31 +25,30 @@ export class FirebaseService {
   }
 
   getProducts(){
-    this.products = this.db.list<Product>(this.path);
+    this.products = this.db.list<Product>(this.productspath);
     
     return this.products;
   }
 
-  getFavProducts(){
-    this.favoriteProducts = this.db.list<Product>(this.path).valueChanges().map(snapProducts => {
-      const topRatedProducts = snapProducts.filter(item => item.rate > 0 );
-      // console.log(' getFavProducts map');
-      return topRatedProducts;
+  getRateProducts(){
+    this.favoriteProducts = this.db.list<Product>(this.productspath).snapshotChanges().map(snapProducts => {
+      const topRatedProducts = snapProducts.map(c => ({ $key: c.payload.key, ...c.payload.val() }));
+      return topRatedProducts.filter(item => item.rate > 0 );
     });
-    // console.log(' getFavProducts() ');
     return this.favoriteProducts;
   }
 
   getNeverBuyProducts(){
-    this.neverBuyProducts = this.db.list<Product>(this.path).valueChanges().map(snapProducts => {
-      const never = snapProducts.filter(item => item.bought == null );
-      return never;
+    this.neverBuyProducts = this.db.list<Product>(this.productspath).snapshotChanges().map(snapProducts => {
+      const never = snapProducts.map(c => ({ $key: c.payload.key, ...c.payload.val() }));
+      return never.filter(item => item.bought == null );
     });
     return this.neverBuyProducts;
   }
 
   getProductDetails(id){ 
-    this.productDetails = this.db.object<Product>(this.path + '/' + id ).valueChanges() as Observable<any>;
+    this.productDetails = this.db.object<Product>(this.productspath + '/' + id ).snapshotChanges()
+    .map(c => ({ $key: c.payload.key, ...c.payload.val() }));
     return this.productDetails;
 
   }
@@ -58,8 +57,7 @@ export class FirebaseService {
     var AddProduct = JSON.parse(JSON.stringify( productDetails )); //remotes the undefined fields
 
     var updates = {};
-    updates['/' + this.path + '/' + _id] = AddProduct;
-
+    updates['/' + this.productspath + '/' + _id] = AddProduct;
     return this.db.database.ref().update(updates);
   }
 
@@ -73,5 +71,4 @@ export interface Product{
   price?: number;
   imageUrl?: string;
   rate?: number;
-  bought?: boolean;
 }

@@ -10,14 +10,14 @@ import { Observable } from 'rxjs/Observable';
 })
 export class HomeComponent implements OnInit {
 
-  favoriteProducts : any;
+  rateProducts : any;
   neverBuyProducts : any;
 
   constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit() {
-    this.firebaseService.getFavProducts().subscribe(snapProducts => {
-      this.favoriteProducts = snapProducts;
+    this.firebaseService.getRateProducts().subscribe(snapProducts => {
+      this.rateProducts = snapProducts;
       //console.log(this.favoriteProducts);
     });
 

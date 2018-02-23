@@ -28,18 +28,6 @@ export class ProductsComponent implements OnInit {
       return changes.map(c => ({ $key: c.payload.key, ...c.payload.val() }));
     });
 
-    // var query = this.firebaseService.getProducts().query.orderByKey();
-    // query.once("value")
-    //   .then(snapshot => {
-    //     snapshot.forEach(childSnapshot => {
-    //       // key will be "ada" the first time and "alan" the second time
-    //       var key = childSnapshot.key;
-    //       console.log("key "+key);
-    //       // childData will be the actual contents of the child
-    //       var childData = childSnapshot.val();
-    //       console.log("Data " + JSON.stringify(childData) );
-    //   });
-    // });
 
   }
 

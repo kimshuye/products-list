@@ -37,8 +37,7 @@ export class AddProductComponent implements OnInit {
       barcode: this.barcode,
       price: this.price,
       imageUrl: this.imageUrl,
-      rate: this.rate,
-      bought: this.bought
+      rate: this.rate
       
     }
     
@@ -50,14 +49,4 @@ export class AddProductComponent implements OnInit {
 
 }
 
-// export class ProductModel{
-//   constructor(
-//     sku: string,
-//     name: string,
-//     barcode: string,
-//     price: number,
-//     imageUrl: string,
-//     rate: number,
-//     bought: boolean
-//   ) {  }
-// }
+

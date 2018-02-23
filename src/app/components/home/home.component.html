@@ -1,7 +1,7 @@
 
 <mat-toolbar>Top Rated Products</mat-toolbar>
 <mat-grid-list cols="4" >
-    <mat-grid-tile *ngFor="let product of favoriteProducts  " >
+    <mat-grid-tile *ngFor="let product of rateProducts  " >
         <mat-card role="group">
             <mat-card-header>
                 <mat-card-title><h4>{{product.name}}</h4></mat-card-title>                
@@ -12,8 +12,8 @@
             <mat-card-content><p>{{product.price}} ฿ </p></mat-card-content>
 
             <mat-card-actions align="" >
-                <button mat-button mat-raised-button class="detailButton" [routerLink]="['/product/' + product.barcode ]" > <i class="material-icons">visibility</i> Product Details</button>
-                <button mat-button mat-raised-button class="editButton" [routerLink]="['/edit-product/' + product.barcode ]" > <i class="material-icons">mode_edit</i> Edit Product</button>
+                <button mat-button mat-raised-button class="detailButton" [routerLink]="['/product/' + product.$key ]" > <i class="material-icons">visibility</i> Product Details</button>
+                <button mat-button mat-raised-button class="editButton" [routerLink]="['/edit-product/' + product.$key ]" > <i class="material-icons">mode_edit</i> Edit Product</button>
                 
             </mat-card-actions>
         </mat-card>
@@ -34,8 +34,8 @@
             <mat-card-content><p>{{product.price}} ฿ </p></mat-card-content>
 
             <mat-card-actions align="" >
-                <button mat-button mat-raised-button class="detailButton" [routerLink]="['/product/' + product.barcode ]" > <i class="material-icons">visibility</i> Product Details</button>
-                <button mat-button mat-raised-button class="editButton" [routerLink]="['/edit-product/' + product.barcode ]" > <i class="material-icons">mode_edit</i> Edit Product</button>
+                <button mat-button mat-raised-button class="detailButton" [routerLink]="['/product/' + product.$key ]" > <i class="material-icons">visibility</i> Product Details</button>
+                <button mat-button mat-raised-button class="editButton" [routerLink]="['/edit-product/' + product.$key ]" > <i class="material-icons">mode_edit</i> Edit Product</button>
                     
             </mat-card-actions>
         </mat-card>
