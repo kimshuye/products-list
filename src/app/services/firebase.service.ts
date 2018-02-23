@@ -4,37 +4,39 @@ import { AngularFireDatabase , AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 
 
-
 @Injectable()
 export class FirebaseService {
 
   
-  products : AngularFireList<any[]>;
+  products : AngularFireList<Product>;
   
   favoriteProducts: Observable<any>;
   neverBuyProducts: Observable<any>;
   productDetails: Observable<any>;
 
 
-  shirtsRef;
+  shirtsRef: any;
 
   path = 'products';
 
   constructor(private db: AngularFireDatabase) { 
-    this.shirtsRef = db.list<Product>(this.path);
+    this.getProducts();
+    this.shirtsRef = this.db;
   }
 
   getProducts(){
-    this.products = this.db.list(this.path);
-    this.products.valueChanges().subscribe(console.log)
+    this.products = this.db.list<Product>(this.path);
+    
     return this.products;
   }
 
   getFavProducts(){
     this.favoriteProducts = this.db.list<Product>(this.path).valueChanges().map(snapProducts => {
       const topRatedProducts = snapProducts.filter(item => item.rate > 0 );
+      // console.log(' getFavProducts map');
       return topRatedProducts;
     });
+    // console.log(' getFavProducts() ');
     return this.favoriteProducts;
   }
 
@@ -52,14 +54,24 @@ export class FirebaseService {
 
   }
 
+  addProduct(_id,productDetails){
+    var AddProduct = JSON.parse(JSON.stringify( productDetails )); //remotes the undefined fields
+
+    var updates = {};
+    updates['/' + this.path + '/' + _id] = AddProduct;
+
+    return this.db.database.ref().update(updates);
+  }
+
 }
 
 export interface Product{
-    sku?: string;
-    name?: string; 
-    barcode?: string;
-    price?: number;
-    imageUrl?: string;
-    rate?: number;
-    bought?: boolean;
+  $key?: string;
+  sku?: string;
+  name?: string; 
+  barcode?: string;
+  price?: number;
+  imageUrl?: string;
+  rate?: number;
+  bought?: boolean;
 }

@@ -7,7 +7,7 @@
   </mat-toolbar>
 
 <mat-grid-list cols="4" >
-  <mat-grid-tile *ngFor="let product of allProducts" >
+  <mat-grid-tile *ngFor="let product of allProducts | async" >
 
     <mat-card class="productTitle" >
 
@@ -18,8 +18,8 @@
       <img mat-card-lg-image src="{{product.imageUrl}}" alt="{{product.name}}" >      
 
       <mat-card-actions >
-        <button [routerLink]="['/product/'+product.barcode]" mat-raised-button color="detailsButton"> <i class="material-icons">visibility</i> Product Details </button>
-        <button [routerLink]="['/edit-product/'+product.barcode]"  mat-raised-button class="editButton"> <i class="material-icons">mode_edit</i> Edit </button>
+        <button [routerLink]="['/product/' + product.$key ]" mat-raised-button color="detailsButton"> <i class="material-icons">visibility</i> Product Details </button>
+        <button [routerLink]="['/edit-product/' + product.$key ]"  mat-raised-button class="editButton"> <i class="material-icons">mode_edit</i> Edit </button>
           
       </mat-card-actions>
 

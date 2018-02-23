@@ -18,12 +18,12 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.firebaseService.getFavProducts().subscribe(snapProducts => {
       this.favoriteProducts = snapProducts;
-      console.log(this.favoriteProducts);
+      //console.log(this.favoriteProducts);
     });
 
     this.firebaseService.getNeverBuyProducts().subscribe(snapProducts => {
       this.neverBuyProducts = snapProducts;
-      console.log('Never Products : ' , this.neverBuyProducts);
+      //console.log('Never Products : ' , this.neverBuyProducts);
     });
   }
 

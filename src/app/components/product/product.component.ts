@@ -32,7 +32,7 @@ export class ProductComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
     this.firebaseService.getProductDetails(this.id).subscribe(snapProduct => {
-      console.log('product detail : ' + JSON.stringify(snapProduct) );
+      //console.log('product detail : ' + JSON.stringify(snapProduct) );
       this.productInVal = snapProduct;
       this.sku = snapProduct.sku;
       this.name = snapProduct.name;
