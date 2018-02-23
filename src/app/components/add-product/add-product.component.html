@@ -48,7 +48,8 @@
 
 </div>
 
-<!-- <input [matDatepicker]="myDatepicker">
-<mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
-<mat-datepicker #myDatepicker></mat-datepicker> -->
-
+<mat-input-container class="" >
+    <input matInput [matDatepicker]="dateEle" placeholder="Date Input " [(ngModel)]="date" >
+    <mat-datepicker-toggle matSuffix  [for]="dateEle"></mat-datepicker-toggle>  
+    <mat-datepicker #dateEle (selectedChanged)="updateDate($event)"></mat-datepicker>
+</mat-input-container>

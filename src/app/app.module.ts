@@ -98,7 +98,25 @@ import { FirebaseService } from './services/firebase.service';
   ],
 
   exports:[
-    MouseWheelDirective
+    BrowserModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
+
+    MatButtonModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatGridListModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatToolbarModule,
+    MatProgressSpinnerModule,
+    MatTabsModule,
+    MatListModule,
+    MatIconModule,
+    MouseWheelDirective,
+
   ],
 
   providers: [FirebaseService],

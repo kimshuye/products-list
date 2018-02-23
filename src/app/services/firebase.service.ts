@@ -61,6 +61,8 @@ export class FirebaseService {
     return this.db.database.ref().update(updates);
   }
 
+
+
 }
 
 export interface Product{
@@ -72,3 +74,4 @@ export interface Product{
   imageUrl?: string;
   rate?: number;
 }
+
