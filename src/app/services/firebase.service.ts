@@ -61,6 +61,14 @@ export class FirebaseService {
     return this.db.database.ref().update(updates);
   }
 
+  updateProduct(_id,productDetails){
+    var Editproduct = JSON.parse(JSON.stringify( productDetails )); //remotes the undefined fields
+
+    var updates = {};
+    updates['/' + this.productspath + '/' + _id] = Editproduct;
+    return this.db.database.ref().update(updates);
+  }
+
 
 
 }

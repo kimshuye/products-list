@@ -30,13 +30,13 @@ import { Observable } from 'rxjs/Observable';
 })
 export class AddProductComponent implements OnInit {
 
-  sku: string;
-  name: string;
-  barcode: string;
-  price: number;
-  imageUrl: string;
-  rate: number;
-  bought: boolean;
+  sku;
+  name;
+  barcode;
+  price;
+  imageUrl;
+  rate;
+  bought;
   
   date;
   dateEle;

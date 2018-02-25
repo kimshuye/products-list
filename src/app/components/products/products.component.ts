@@ -13,7 +13,7 @@ export class ProductsComponent implements OnInit {
   
   allProducts: any;
 
-  products:any;
+  // products:any;
 
   constructor(private firebaseService: FirebaseService ) {    }
 
