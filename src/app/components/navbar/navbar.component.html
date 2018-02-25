@@ -14,11 +14,18 @@
         <li class="nav-item"> 
           <a class="nav-link" [routerLink]="['/products']" > Products </a> 
         </li>
-        <li class="nav-item"> 
+        <li class="nav-item" *ngIf="authenticated"> 
           <a class="nav-link" [routerLink]="['/add-product']" > Add Product </a> 
         </li>
         
       </ul>
+
+      <ul class="navbar-nav navbar-right" >
+        <li class="nav-item" *ngIf="!authenticated" ><a class="nav-link" (click)="login()" >Login</a></li>
+        <li class="nav-item" *ngIf="authenticated" ><a class="nav-link" (click)="logout()" >Logout</a></li>
+
+      </ul>
+
     </div>
   <!-- </div> -->
 

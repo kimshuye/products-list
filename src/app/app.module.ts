@@ -53,6 +53,8 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
 
 //services
 import { FirebaseService } from './services/firebase.service';
@@ -94,7 +96,8 @@ import { FirebaseService } from './services/firebase.service';
     RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(environment.firebase,'product-list-app'),
     AngularFireDatabaseModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireAuthModule,
   ],
 
   exports:[
