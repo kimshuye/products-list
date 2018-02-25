@@ -1,3 +1,16 @@
-<p>
-  delete-product works!
-</p>
+<mat-toolbar color="warn">
+  <span class="mat-headline">Delete Product </span>
+</mat-toolbar>
+
+<div class="delete-confirm" *ngIf="productName">
+  <mat-toolbar color="primary">You are about to delete the product: <br>"{{productName}}"</mat-toolbar>
+  <mat-card role="region" > 
+
+      <img mat-card-md-image src="{{productimageUrl}}" alt="{{productName}}">
+
+      <mat-card-actions align="" >
+          <button [routerLink]="['/product/'+id]" mat-button color="accent"> Go Back </button>
+          <button (click)="removeProduct()" mat-raised-button color="warn">  Delete Permanently </button>
+      </mat-card-actions>
+  </mat-card>
+</div>

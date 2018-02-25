@@ -69,6 +69,10 @@ export class FirebaseService {
     return this.db.database.ref().update(updates);
   }
 
+  deleteProduct(_id){
+    return this.db.list(this.productspath).remove(_id);
+  }
+
 
 
 }
