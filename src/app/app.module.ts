@@ -40,6 +40,7 @@ import {
 import { RouterModule , Routes } from '@angular/router';
 const appRoutes: Routes = [
   {path: '' , component:HomeComponent}
+  ,{path: 'home' , component:HomeComponent}
   ,{path: 'products' , component:ProductsComponent}
   ,{path: 'product/:id' , component:ProductComponent}
   ,{path: 'add-product' , component:AddProductComponent}
@@ -58,7 +59,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 //services
 import { FirebaseService } from './services/firebase.service';
-
+// auth0
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -122,7 +124,7 @@ import { FirebaseService } from './services/firebase.service';
 
   ],
 
-  providers: [FirebaseService],
+  providers: [FirebaseService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

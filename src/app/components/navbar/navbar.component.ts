@@ -3,7 +3,8 @@ import { Router } from "@angular/router"
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
-
+import { FirebaseService , Product } from '../../services/firebase.service';
+import { AngularFireDatabase , AngularFireList } from 'angularfire2/database';
 
 @Component({
   selector: 'app-navbar',
@@ -15,29 +16,35 @@ export class NavbarComponent implements OnInit {
   user: Observable<firebase.User>;
   authenticated:boolean = false;
 
-  constructor(public af:AngularFireAuth,
-    private router:Router
+  constructor(
+    private router:Router,
+    private fs: FirebaseService
   ) {
-    this.af.authState.subscribe(auth => {
-      if(auth!=null){
-        this.user = af.authState;
-        this.authenticated = true;
-      }
-    });
+    // this.af.authState.subscribe(auth => {
+    //   if(auth!=null){
+    //     this.user = this.af.authState;
+    //     this.authenticated = true;
+    //   }
+    // });
+    this.user = this.fs.user;
+    this.authenticated = this.fs.authenticated;
   }  
 
   ngOnInit() {
   }
 
   login(){
-    this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-    this.authenticated = true;
+    this.fs.login();
+    this.user = this.fs.user;
+    this.authenticated = this.fs.authenticated;
+    this.router.navigate(['home']) ;
   }
 
   logout(){
-    this.af.auth.signOut();
-    this.authenticated = false;
-    this.router.navigate(['']) ;
+    this.fs.logout();
+    this.user = this.fs.user;
+    this.authenticated = this.fs.authenticated;
+    // this.router.navigate(['home']) ;
   }
 
 }

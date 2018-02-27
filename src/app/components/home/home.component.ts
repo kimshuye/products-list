@@ -17,24 +17,19 @@ export class HomeComponent implements OnInit {
   user: Observable<firebase.User>;
   authenticated:boolean = false;
 
-  constructor(private firebaseService: FirebaseService,
-    public af:AngularFireAuth
+  constructor(private fs: FirebaseService
   ) { 
-    this.af.authState.subscribe(auth =>{
-      if(auth != null){
-        this.user = af.authState;
-        this.authenticated = true;
-      }
-    });
+    this.user = this.fs.user;
+    this.authenticated = this.fs.authenticated;
   }
 
   ngOnInit() {
-    this.firebaseService.getRateProducts().subscribe(snapProducts => {
+    this.fs.getRateProducts().subscribe(snapProducts => {
       this.rateProducts = snapProducts;
       //console.log(this.favoriteProducts);
     });
 
-    this.firebaseService.getNeverBuyProducts().subscribe(snapProducts => {
+    this.fs.getNeverBuyProducts().subscribe(snapProducts => {
       this.neverBuyProducts = snapProducts;
       //console.log('Never Products : ' , this.neverBuyProducts);
     });
