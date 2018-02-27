@@ -20,7 +20,7 @@
     </mat-grid-tile>
 </mat-grid-list>
 
-
+<div *ngIf="authenticated">
 <mat-toolbar>Never Buy Products</mat-toolbar>
 <mat-grid-list cols="4" >
     <mat-grid-tile *ngFor="let product of neverBuyProducts  " >
@@ -41,5 +41,5 @@
         </mat-card>
     </mat-grid-tile>
 </mat-grid-list>
-
+</div>
     

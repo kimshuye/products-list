@@ -8,6 +8,8 @@ import { NativeDateAdapter } from "@angular/material";
 
 import { FirebaseService ,Product  } from '../../services/firebase.service';
 import { Observable } from 'rxjs/Observable';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
 
 
 
@@ -41,11 +43,22 @@ export class AddProductComponent implements OnInit {
   date;
   dateEle;
 
+  user: Observable<firebase.User>;
+  authenticated:boolean = false;
+
   constructor(
     private firebaseService: FirebaseService,
     private router:Router,
-    private adapter: DateAdapter<any>
-  ) { }
+    private adapter: DateAdapter<any>,
+    private af:AngularFireAuth
+  ) { 
+    this.af.authState.subscribe(auth => {
+      if(auth!=null){
+        this.user = af.authState;
+        this.authenticated = true;
+      }
+    });
+  }
 
   ngOnInit() {
   }

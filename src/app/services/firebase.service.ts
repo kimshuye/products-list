@@ -3,6 +3,9 @@ import { AngularFireDatabase , AngularFireList } from 'angularfire2/database';
 
 import { Observable } from 'rxjs/Observable';
 
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
+
 
 @Injectable()
 export class FirebaseService {
@@ -14,10 +17,13 @@ export class FirebaseService {
   neverBuyProducts: Observable<any>;
   productDetails: Observable<any>;
 
-
   shirtsRef: any;
 
   productspath = 'products';
+
+  af:AngularFireAuth;
+  user: Observable<firebase.User>;
+  authenticated:boolean = false;
 
   constructor(private db: AngularFireDatabase) { 
     this.getProducts();

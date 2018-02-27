@@ -1,50 +1,52 @@
 
+<div *ngIf="authenticated">
+    <mat-toolbar>
+        <span class="mat-headline">Add Product </span>
+    </mat-toolbar>
 
-<mat-toolbar>
-    <span class="mat-headline">Add Product </span>
-</mat-toolbar>
+    <div class="add-product-form">
+    <a [routerLink]="['/products']">Back</a>
+    <form (submit)="submitAdd()" #myForm="ngForm">
 
-<div class="add-product-form">
-  <a [routerLink]="['/products']">Back</a>
-  <form (submit)="submitAdd()" #myForm="ngForm">
+        <mat-input-container class="full-width">
+            <input matInput placeholder="Product sku" [(ngModel)]="sku" name="sku" required >
+        </mat-input-container>
 
-      <mat-input-container class="full-width">
-          <input matInput placeholder="Product sku" [(ngModel)]="sku" name="sku" required >
-      </mat-input-container>
+        <mat-input-container class="full-width">
+            <input matInput placeholder="Product name" [(ngModel)]="name" name="name" required>
+        </mat-input-container>
 
-      <mat-input-container class="full-width">
-        <input matInput placeholder="Product name" [(ngModel)]="name" name="name" required>
-      </mat-input-container>
+        <mat-input-container class="full-width">
+            <input matInput placeholder="Product barcode" [(ngModel)]="barcode" name="barcode" required>
+        </mat-input-container>
 
-      <mat-input-container class="full-width">
-          <input matInput placeholder="Product barcode" [(ngModel)]="barcode" name="barcode" required>
-      </mat-input-container>
+        <mat-input-container class="full-width">
+            <input
+            mouseWheel 
+            matInput placeholder="Product Price" min="0"  step="1" type="number" [(ngModel)]="price" name="price" id="price" required>
+        </mat-input-container>
 
-      <mat-input-container class="full-width">
-        <input
-        mouseWheel 
-        matInput placeholder="Product Price" min="0"  step="1" type="number" [(ngModel)]="price" name="price" id="price" required>
-      </mat-input-container>
+        <mat-input-container class="full-width">
+            <input
+            mouseWheel 
+            matInput placeholder="Product Rate (1-5)" min="0" max="5" step="0.1" type="number" [(ngModel)]="rate" name="rate" id="rate" required>
+        </mat-input-container>  
 
-      <mat-input-container class="full-width">
-        <input
-        mouseWheel 
-        matInput placeholder="Product Rate (1-5)" min="0" max="5" step="0.1" type="number" [(ngModel)]="rate" name="rate" id="rate" required>
-      </mat-input-container>  
+        <mat-input-container class="third-width">
+            <input matInput placeholder="Image Url (enter image URL)" [(ngModel)]="imageUrl" name="imageUrl" required>
+        </mat-input-container><br>
 
-      <mat-input-container class="third-width">
-          <input matInput placeholder="Image Url (enter image URL)" [(ngModel)]="imageUrl" name="imageUrl" required>
-      </mat-input-container><br>
+        <!-- <mat-input-container class="full-width">
+            <textarea matInput rows="5" placeholder="Product Description" [(ngModel)]="description" name="description" ></textarea>
+        </mat-input-container> -->
 
-      <!-- <mat-input-container class="full-width">
-          <textarea matInput rows="5" placeholder="Product Description" [(ngModel)]="description" name="description" ></textarea>
-      </mat-input-container> -->
+        <img src="{{imageUrl}}" alt="{{name}}">
+        <hr>
+        <button mat-raised-button value="submit" [disabled]="!myForm.form.valid"> Create Product </button>
 
-      <img src="{{imageUrl}}" alt="{{name}}">
-      <hr>
-      <button mat-raised-button value="submit" [disabled]="!myForm.form.valid"> Create Product </button>
+    </form>
 
-  </form>
+    </div>
 
 </div>
 

@@ -21,9 +21,14 @@
       </ul>
 
       <ul class="navbar-nav navbar-right" >
-        <li class="nav-item" *ngIf="!authenticated" ><a class="nav-link" (click)="login()" >Login</a></li>
-        <li class="nav-item" *ngIf="authenticated" ><a class="nav-link" (click)="logout()" >Logout</a></li>
-
+        <li class="nav-item" >
+          <div *ngIf="af.authState | async as user; else showLogin">
+            <a class="nav-link" (click)="logout()">Hello {{ user.displayName }}! Logout</a>
+          </div>
+          <ng-template #showLogin>
+            <a class="nav-link" (click)="login()">Login with Google</a>
+          </ng-template>
+        </li>
       </ul>
 
     </div>
