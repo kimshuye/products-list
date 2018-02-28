@@ -43,8 +43,8 @@ export class FirebaseService {
   }
 
   login(){
-    this.authser.login();
-    // this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());    
+    // this.authser.login();
+    this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());    
     this.af.authState.subscribe(auth => {
       if(auth!=null){
         this.user = this.af.authState;
@@ -52,7 +52,7 @@ export class FirebaseService {
       }
     });
     // console.log("login ");
-    // console.log(this.user);
+    // console.log(this.af);
   }
 
   logout(){
