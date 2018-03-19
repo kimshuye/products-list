@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+
+
 import { FirebaseService , Product } from '../../services/firebase.service';
-import { AngularFireAuth } from 'angularfire2/auth';
+
+import { Router } from '@angular/router';
+
+import { AuthService } from '../../services/auth.service';
+
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 
@@ -17,7 +23,8 @@ export class HomeComponent implements OnInit {
   user: Observable<firebase.User>;
   authenticated:boolean = false;
 
-  constructor(private fs: FirebaseService
+  constructor(private fs: FirebaseService,
+    private authService:AuthService,private router:Router
   ) { 
     this.user = this.fs.user;
     this.authenticated = this.fs.authenticated;
@@ -33,6 +40,11 @@ export class HomeComponent implements OnInit {
       this.neverBuyProducts = snapProducts;
       //console.log('Never Products : ' , this.neverBuyProducts);
     });
+  }
+
+  logout(){
+    this.authService.logout();
+    this.router.navigate(['login']);
   }
 
 }

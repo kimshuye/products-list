@@ -1,4 +1,11 @@
-
+<div class="container">
+    <div class="jumbotron">
+        <h1>Welcome</h1>
+        <p>You should only see that page when you're logged in!</p>
+        <p><button class="btn btn-default" (click)="logout()" >Logout</button></p>
+    </div>
+</div>
+      
 <mat-toolbar>Top Rated Products</mat-toolbar>
 <mat-grid-list cols="4" >
     <mat-grid-tile *ngFor="let product of rateProducts  " >

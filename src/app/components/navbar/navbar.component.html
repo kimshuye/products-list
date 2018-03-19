@@ -26,9 +26,9 @@
             Hello {{ u.displayName }}! <a class="nav-link" (click)="logout()" [routerLink]="['/home']">Logout</a>
           </div>
           <ng-template #showLogin>
-            <a class="nav-link" (click)="login()" [routerLink]="['/login']">Login</a>
+            <a class="nav-link" [routerLink]="['/login']">Login</a>
           </ng-template>
-        </li>
+        </li>        
       </ul>
 
     </div>
