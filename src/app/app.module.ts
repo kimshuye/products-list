@@ -6,7 +6,7 @@ import { MouseWheelDirective } from './mouseWheelDirective/mousewheel.directive'
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-
+import { LoginComponent } from './components/login/login.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductComponent } from './components/product/product.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
@@ -39,13 +39,14 @@ import {
 //Routes
 import { RouterModule , Routes } from '@angular/router';
 const appRoutes: Routes = [
-  {path: '' , component:HomeComponent}
+  {path: '' , redirectTo: '/home', pathMatch: 'full'}
   ,{path: 'home' , component:HomeComponent}
   ,{path: 'products' , component:ProductsComponent}
   ,{path: 'product/:id' , component:ProductComponent}
   ,{path: 'add-product' , component:AddProductComponent}
   ,{path: 'edit-product/:id' , component:EditProductComponent}
   ,{path: 'delete-product/:id' , component:DeleteProductComponent}
+  ,{path:'login',component:LoginComponent}
 
 ];
 
@@ -64,10 +65,12 @@ import { OAuthService } from './services/oauth.service';
 // auth
 import { AuthService } from './services/auth.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    LoginComponent,
     ProductsComponent,
     ProductComponent,
     AddProductComponent,
@@ -77,6 +80,8 @@ import { AuthService } from './services/auth.service';
     FooterComponent,
 
     MouseWheelDirective,
+
+    
   ],
   imports: [
     BrowserModule,

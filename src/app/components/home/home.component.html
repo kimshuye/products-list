@@ -1,10 +1,3 @@
-<div class="container">
-    <div class="jumbotron">
-        <h1>Welcome</h1>
-        <p>You should only see that page when you're logged in!</p>
-        <p><button class="btn btn-default" (click)="logout()" >Logout</button></p>
-    </div>
-</div>
       
 <mat-toolbar>Top Rated Products</mat-toolbar>
 <mat-grid-list cols="4" >
@@ -20,14 +13,25 @@
 
             <mat-card-actions align="" >
                 <button mat-button mat-raised-button class="detailButton" [routerLink]="['/product/' + product.$key ]" > <i class="material-icons">visibility</i> Product Details</button>
-                <button mat-button mat-raised-button class="editButton" [routerLink]="['/edit-product/' + product.$key ]" > <i class="material-icons">mode_edit</i> Edit Product</button>
+                <button *ngIf="isLoggedIn" mat-button mat-raised-button class="editButton" [routerLink]="['/edit-product/' + product.$key ]" > <i class="material-icons">mode_edit</i> Edit Product</button>
                 
             </mat-card-actions>
         </mat-card>
     </mat-grid-tile>
 </mat-grid-list>
 
-<div *ngIf="authenticated">
+
+
+<div *ngIf="isLoggedIn">
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Welcome</h1>
+        <p>You should only see that page when you're logged in!</p>
+        <p><button class="btn btn-default" (click)="logout()" >Logout</button></p>
+    </div>
+</div>
+
 <mat-toolbar>Never Buy Products</mat-toolbar>
 <mat-grid-list cols="4" >
     <mat-grid-tile *ngFor="let product of neverBuyProducts  " >
@@ -42,7 +46,7 @@
 
             <mat-card-actions align="" >
                 <button mat-button mat-raised-button class="detailButton" [routerLink]="['/product/' + product.$key ]" > <i class="material-icons">visibility</i> Product Details</button>
-                <button mat-button mat-raised-button class="editButton" [routerLink]="['/edit-product/' + product.$key ]" > <i class="material-icons">mode_edit</i> Edit Product</button>
+                <button *ngIf="isLoggedIn" mat-button mat-raised-button class="editButton" [routerLink]="['/edit-product/' + product.$key ]" > <i class="material-icons">mode_edit</i> Edit Product</button>
                     
             </mat-card-actions>
         </mat-card>

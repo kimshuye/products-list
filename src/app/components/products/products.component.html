@@ -19,7 +19,7 @@
 
       <mat-card-actions >
         <button [routerLink]="['/product/' + product.$key ]" mat-raised-button color="detailsButton"> <i class="material-icons">visibility</i> Product Details </button>
-        <button [routerLink]="['/edit-product/' + product.$key ]"  mat-raised-button class="editButton"> <i class="material-icons">mode_edit</i> Edit </button>
+        <button *ngIf="isLoggedIn" [routerLink]="['/edit-product/' + product.$key ]"  mat-raised-button class="editButton"> <i class="material-icons">mode_edit</i> Edit </button>
           
       </mat-card-actions>
 

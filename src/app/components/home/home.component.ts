@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-
 import { FirebaseService , Product } from '../../services/firebase.service';
 
 import { Router } from '@angular/router';
@@ -22,12 +21,35 @@ export class HomeComponent implements OnInit {
 
   user: Observable<firebase.User>;
   authenticated:boolean = false;
+  isLoggedIn : boolean;
+  displayname;
+  email;
 
   constructor(private fs: FirebaseService,
-    private authService:AuthService,private router:Router
+    private authService:AuthService,
+    private router:Router
   ) { 
-    this.user = this.fs.user;
-    this.authenticated = this.fs.authenticated;
+    this.authService.af.authState.subscribe(auth =>{
+      if(auth == null){
+        // not logged in
+        this.user = null;
+        this.authenticated = false;
+
+        this.isLoggedIn = false;
+        this.displayname = '';
+        this.email = '';
+        // this.router.navigate(['login']);
+      }else{
+        // logged in
+        this.user = authService.af.authState;
+        this.authenticated = true;
+
+        this.isLoggedIn = true;
+        this.displayname = auth.displayName;
+        this.email = auth.email;
+        // this.router.navigate(['']);
+      }
+    });
   }
 
   ngOnInit() {
@@ -44,7 +66,7 @@ export class HomeComponent implements OnInit {
 
   logout(){
     this.authService.logout();
-    this.router.navigate(['login']);
+    //this.router.navigate(['home']);
   }
 
 }

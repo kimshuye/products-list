@@ -15,13 +15,12 @@ import { AngularFireDatabase , AngularFireList } from 'angularfire2/database';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  user: Observable<firebase.User>;
+  authenticated:boolean = false;
 
   isLoggedIn : boolean;
   displayname;
   email;
-
-  user: Observable<firebase.User>;
-  authenticated:boolean = false;
 
   constructor(
     public authService:AuthService,
@@ -43,7 +42,7 @@ export class NavbarComponent implements OnInit {
         this.isLoggedIn = false;
         this.displayname = '';
         this.email = '';
-        this.router.navigate(['login']);
+        // this.router.navigate(['login']);
       }else{
         // logged in
         this.user = authService.af.authState;
@@ -52,7 +51,7 @@ export class NavbarComponent implements OnInit {
         this.isLoggedIn = true;
         this.displayname = auth.displayName;
         this.email = auth.email;
-        this.router.navigate(['']);
+        // this.router.navigate(['']);
       }
     });
     
@@ -61,12 +60,9 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
-  login(){
-    
-  }
-
   logout(){
-    
+    this.authService.logout();
+    //this.router.navigate(['home']);
   }
 
 }

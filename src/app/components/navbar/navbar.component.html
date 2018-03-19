@@ -23,13 +23,15 @@
       <ul class="navbar-nav navbar-right" >
         <li class="nav-item" >
           <div *ngIf="user | async as u; else showLogin">
-            Hello {{ u.displayName }}! <a class="nav-link" (click)="logout()" [routerLink]="['/home']">Logout</a>
+            Logged In: {{ u.displayName }}! {{u.email}} <a class="nav-link" (click)="logout()" [routerLink]="['/home']">Logout</a> 
           </div>
           <ng-template #showLogin>
             <a class="nav-link" [routerLink]="['/login']">Login</a>
           </ng-template>
-        </li>        
+        </li>
       </ul>
+      
+               
 
     </div>
   <!-- </div> -->
