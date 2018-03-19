@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-import { AuthService } from './auth.service';
+import { OAuthService } from './auth.service';
 
 
 @Injectable()
@@ -26,39 +26,21 @@ export class FirebaseService {
   authenticated:boolean = false;
 
   constructor(private db: AngularFireDatabase
-    ,private af:AngularFireAuth
-    ,private authser:AuthService
-  ) {     
-    af.authState.subscribe(auth => {
-      if(auth!=null){
-        this.user = af.authState;
-        this.authenticated = true;
-      }
-    });
-    this.af = af;
-    // console.log("constructorn ");
-    // console.log(this.user);
+  ) {
+    
     this.getProducts();
     this.shirtsRef = this.db;
   }
 
   login(){
     // this.authser.login();
-    this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());    
-    this.af.authState.subscribe(auth => {
-      if(auth!=null){
-        this.user = this.af.authState;
-        this.authenticated = true;
-      }
-    });
+    
     // console.log("login ");
     // console.log(this.af);
   }
 
   logout(){
-    this.af.auth.signOut();
-    this.user = null;
-    this.authenticated = false;
+    
   }
 
   getProducts(){

@@ -49,15 +49,9 @@ export class AddProductComponent implements OnInit {
   constructor(
     private firebaseService: FirebaseService,
     private router:Router,
-    private adapter: DateAdapter<any>,
-    private af:AngularFireAuth
+    private adapter: DateAdapter<any>
   ) { 
-    this.af.authState.subscribe(auth => {
-      if(auth!=null){
-        this.user = af.authState;
-        this.authenticated = true;
-      }
-    });
+    
   }
 
   ngOnInit() {

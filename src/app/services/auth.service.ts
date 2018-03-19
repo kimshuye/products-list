@@ -6,7 +6,7 @@ import 'rxjs/add/operator/filter';
 import * as auth0 from 'auth0-js';
 
 @Injectable()
-export class AuthService {
+export class OAuthService {
 
   auth0 = new auth0.WebAuth({
     clientID: 'NG1z7dLTpr9AVJ4cIutmaW9ZSh714EdG',
